@@ -8,7 +8,11 @@ var setColor = (event) => {
 }
 
 var emptyColourInput = () => {
-    globalColour = document.querySelector('.color-value').value = null;
+    document.querySelector('.color-value').value = null;
+}
+
+var applyColor = (event) => {
+    event.target.style.backgroundColor = globalColour;
 }
 
 document.querySelector('.set-color').addEventListener('click',setColor);
@@ -19,6 +23,7 @@ var addSquares = () => {
         var square = document.createElement('div')
         square.classList.add('square');
         main.appendChild(square);
+        main.lastChild.addEventListener('mousedown',applyColor)
     }
 }
 
