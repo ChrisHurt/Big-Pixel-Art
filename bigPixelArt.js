@@ -23,7 +23,7 @@ var addSquares = () => {
         var square = document.createElement('div')
         square.classList.add('square');
         main.appendChild(square);
-        main.lastChild.addEventListener('mousedown',applyColor)
+        main.lastChild.addEventListener('mouseover',applyColor)
     }
 }
 
