@@ -1,4 +1,5 @@
 globalColour = null;
+var main = document.querySelector('main')
 
 var setColor = (event) => {
     event.preventDefault();
@@ -14,11 +15,7 @@ var emptyColourInput = () => {
 var applyColor = (event) => {
     event.target.style.backgroundColor = globalColour;
 }
-
-document.querySelector('.set-color').addEventListener('click',setColor);
-
 var addSquares = () => {
-    var main = document.querySelector('main')
     for(var i = 0; i < 3000; i++){
         var square = document.createElement('div')
         square.classList.add('square');
@@ -28,3 +25,17 @@ var addSquares = () => {
 }
 
 addSquares();
+
+var changeMainBackgroundToMovie = () => {
+    movieTitle = document.querySelector('.movie-title').value.toString();
+    $.ajax({
+        method: 'get',
+        url: 'http://www.omdbapi.com/?apikey=2f6435d9&t=' + movieTitle
+    }).done(resp=>{
+        console.log(resp.Poster);
+        main.style.backgroundImage = `url(${resp.Poster})`;
+    });
+}
+
+document.querySelector('.set-color').addEventListener('click',setColor);
+document.querySelector('.omdb').addEventListener('click',changeMainBackgroundToMovie);
