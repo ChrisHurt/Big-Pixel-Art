@@ -12,3 +12,14 @@ var emptyColourInput = () => {
 }
 
 document.querySelector('.set-color').addEventListener('click',setColor);
+
+var addSquares = () => {
+    var main = document.querySelector('main')
+    for(var i = 0; i < 3000; i++){
+        var square = document.createElement('div')
+        square.classList.add('square');
+        main.appendChild(square);
+    }
+}
+
+addSquares();
